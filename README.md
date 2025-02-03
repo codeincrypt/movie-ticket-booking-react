@@ -2,6 +2,14 @@
 
 This project implements a movie ticket booking system with three distinct user panels: customer, admin, and cinema owner (seller).  Built using React JS, Redux Toolkit for the frontend & Python Fast API in backend this application provides a comprehensive platform for managing movie listings, showtimes, bookings, and user accounts.
 
+# Features:
+* Browse Movies – View available movies with details like title, genre, duration, and showtimes.
+* Select Seats – Interactive seat selection with availability status.
+* Secure Booking – Confirm bookings with a smooth checkout process (mock payment or integration).
+* Showtime Management – Choose from multiple showtimes and theaters.
+* User Authentication – Sign up, log in, and manage bookings (if applicable).
+* Admin Panel (optional) – Manage movies, showtimes, and bookings.
+
 ## Key Features
 
 **Customer Panel:**
@@ -56,4 +64,4 @@ This project implements a movie ticket booking system with three distinct user p
 
 ## Contact
 
-Mail Id : [abc]dev.kartikswarnkar@gmail.com
+Mail Id : dev.kartikswarnkar@gmail.com
