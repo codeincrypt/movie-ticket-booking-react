@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Row, Col, Image, Button } from "antd";
+import { Row } from "antd";
 
 const UserProfile = () => {
   const navigate = useNavigate();

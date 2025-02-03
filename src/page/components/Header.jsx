@@ -59,7 +59,7 @@ const Headers = () => {
               <Flex align="middle">
                 <img
                   src={logo}
-                  alt="resume builder"
+                  alt="ticket bookmark"
                   style={{ height: "40px" }}
                 />
               </Flex>
@@ -71,17 +71,12 @@ const Headers = () => {
             <Row justify="end" align="middle" gutter={16}>
               <Col>
                 <Link className="menu-item" to="/home">
-                  Home
+                  Movies
                 </Link>
               </Col>
               <Col>
                 <Link className="menu-item" to="/my-resume">
-                  Resume
-                </Link>
-              </Col>
-              <Col>
-                <Link className="menu-item" to="/resume-template">
-                  Templates
+                  Upcoming Movies
                 </Link>
               </Col>
               {user && (
