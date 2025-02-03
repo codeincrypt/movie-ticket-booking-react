@@ -4,6 +4,7 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
+  background-color: #f6f6f6;
 }
 .ant-select-selector .selector{
   border-radius: 3px;
@@ -167,19 +168,12 @@ body {
   background: #1a91f0;
 }
 
-.custom-tag {
-  -webkit-box-align: center;
-  align-items: center;
-  margin: 0px 12px 12px 0px;
-  padding: 6px 6px 6px 10px;
-  border: 0;
-  font-size: 13px;
-  border-radius: 4px;
-  background-color: rgb(239, 242, 249);
-  color: rgb(30, 37, 50) !important;
-  line-height: 20px;
-  white-space: nowrap;
-  transition: background-color 0.1s, color 0.1s;
-  will-change: opacity, transform;
-  cursor: pointer;
+.movie-list {
+  background: #fff;
+  padding: 26px 25px 24px;
+  border-radius: 24px;
+}
+
+.movie-list-container {
+  padding-inline: 10%;
 }

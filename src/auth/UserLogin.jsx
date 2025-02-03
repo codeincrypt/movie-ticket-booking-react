@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import { useGoogleLogin } from "@react-oauth/google";
 import { Col, Row, Button } from "antd";
 import { FaGoogle } from "react-icons/fa";
-import { login } from "../store/slices/authSlice";
-// import { loginUser } from "../database/request";
 
 const UserLogin = () => {
   const [user, setUser] = useState([]);
-  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -37,7 +33,7 @@ const UserLogin = () => {
         }
         // const {uuid} = await loginUser(data.id, data.name, data.email, data.given_name, data.family_name, data.picture)
         // dispatch(login({...data, uuid}))
-        navigate("/home");
+        navigate("/profile");
       } catch (error) {
         console.error("Error fetching profile:", error);
       }
@@ -46,7 +42,7 @@ const UserLogin = () => {
     if (user) {
       fetchProfile();
     }
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <Row justify="center" align="middle" style={{ minHeight: "80vh" }}>

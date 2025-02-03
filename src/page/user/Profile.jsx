@@ -1,9 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Row } from "antd";
 
 const UserProfile = () => {
-  const navigate = useNavigate();
 
   return (
     <>

@@ -1,4 +1,3 @@
-import Home from "../page/Home";
 import UserLogin from "../auth/UserLogin";
 import SellerLogin from "../auth/UserLogin";
 

@@ -4,6 +4,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import { persistor, store } from "./store";
 import Navigation from "./router/Routing";
+import "./App.css";
 
 function App() {
   return (
