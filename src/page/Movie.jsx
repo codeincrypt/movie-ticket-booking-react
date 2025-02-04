@@ -2,8 +2,6 @@ import React from "react";
 import { Card, Row, Col } from "antd";
 import { MovieLists, IMG_BASE_URL } from "../request/Constant";
 
-const { Meta } = Card;
-
 const MovieList = () => {
   return (
     <div className="movie-list-container">

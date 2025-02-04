@@ -1,4 +1,4 @@
-import { collection, addDoc, query, where, getDocs, doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
 import { v4 as uuidv4 } from "uuid";
 
