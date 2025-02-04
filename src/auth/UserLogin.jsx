@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { useGoogleLogin } from "@react-oauth/google";
-import { Col, Row, Button } from "antd";
+import { Typography, Row, Button, Card } from "antd";
 import { FaGoogle } from "react-icons/fa";
+import { loginUser } from "../database/request";
+import { login } from "../store/slices/authSlice";
+import {getUserInfo} from "../request/request"
+
+const { Title, Text } = Typography;
 
 const UserLogin = () => {
   const [user, setUser] = useState([]);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const getLogin = useGoogleLogin({
     onSuccess: (codeResponse) => setUser(codeResponse),
@@ -17,23 +24,14 @@ const UserLogin = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: "application/json",
-            },
-          }
-        );
-        const data = await response.json();
+        const data = await getUserInfo(user)
         if (data.error) {
           console.error("Error fetching profile:", data.error);
           return;
         }
-        // const {uuid} = await loginUser(data.id, data.name, data.email, data.given_name, data.family_name, data.picture)
-        // dispatch(login({...data, uuid}))
-        navigate("/profile");
+        const {uuid} = await loginUser(data.id, data.name, data.email, data.given_name, data.family_name, data.picture)
+        dispatch(login({...data, uuid}))
+        navigate("/movies");
       } catch (error) {
         console.error("Error fetching profile:", error);
       }
@@ -42,31 +40,22 @@ const UserLogin = () => {
     if (user) {
       fetchProfile();
     }
-  }, [user, navigate]);
+  }, [user, dispatch, navigate]);
 
   return (
-    <Row justify="center" align="middle" style={{ minHeight: "80vh" }}>
-      <Col span={24} style={{ textAlign: "center" }}>
-        <Row justify="center">
-          <Col span={12}>
-            <h1 className="heading1">Log In</h1>
-          </Col>
-          <Col span={16}>
-            <p className="paragraph2">We are happy to see you back!</p>
-            <Button
-              danger
-              size="large"
-              type="primary"
-              icon={<FaGoogle />}
-              className="btn-large"
-              onClick={() => getLogin()}
-            >
-              Google
-            </Button>
-            <p className="paragraph2">I am not registered — Sign Up</p>
-          </Col>
-        </Row>
-      </Col>
+    <Row justify="center" align="middle">
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "90vh", background: "#f5f5f5" }}>
+      <Card style={{ width: 400, textAlign: "center" }}>
+        <Title level={3}>Login</Title>
+        <img src="https://res.cloudinary.com/dpevovkcg/image/upload/v1738688196/movie-ticket/mi6zyx0vc2ogszslwkms.webp" alt="Login" style={{ width: "80%", borderRadius: "8px", marginBottom: 16 }} />
+        <Button type="primary" danger icon={<FaGoogle />} size="large" block onClick={() => getLogin()}>
+          Login with Google
+        </Button>
+        <Text style={{ display: "block", marginTop: 16 }}>
+          I agree to the <Link to="/">Terms & Conditions</Link>
+        </Text>
+      </Card>
+    </div>
     </Row>
   );
 };

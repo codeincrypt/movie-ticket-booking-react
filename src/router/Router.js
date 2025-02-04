@@ -25,6 +25,11 @@ export const AuthRouter = [
     exact: true,
     component: MovieList,
   },
+  {
+    path: "/upcoming-movies",
+    exact: true,
+    component: MovieList,
+  },
 ];
 
 export const UserRouter = [

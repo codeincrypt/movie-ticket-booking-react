@@ -70,12 +70,12 @@ const Headers = () => {
           <Col xs={0} md={16}>
             <Row justify="end" align="middle" gutter={16}>
               <Col>
-                <Link className="menu-item" to="/home">
+                <Link className="menu-item" to="/movies">
                   Movies
                 </Link>
               </Col>
               <Col>
-                <Link className="menu-item" to="/my-resume">
+                <Link className="menu-item" to="/upcoming-movies">
                   Upcoming Movies
                 </Link>
               </Col>
