@@ -88,13 +88,11 @@ const Headers = () => {
               )}
               <Col>
                 {isAuthenticated ? (
-                  <Button type="primary" size="large" onClick={logOut}>
+                  <Button type="primary" size="large" shape="round" danger className="main-button" onClick={logOut}>
                     Logout
                   </Button>
                 ) : (
-                  <Button
-                    type="primary"
-                    size="large"
+                  <Button type="primary" size="large" shape="round" danger className="main-button"
                     onClick={() => navigate("/login")}
                   >
                     Login

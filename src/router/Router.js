@@ -3,6 +3,7 @@ import SellerLogin from "../auth/UserLogin";
 
 import UserProfile from "../page/user/Profile";
 import MovieList from "../page/MovieList";
+import MovieView from "../page/Movie";
 
 export const AuthRouter = [
   {
@@ -24,6 +25,11 @@ export const AuthRouter = [
     path: "/movies",
     exact: true,
     component: MovieList,
+  },
+  {
+    path: "/movies/:id",
+    exact: true,
+    component: MovieView,
   },
   {
     path: "/upcoming-movies",

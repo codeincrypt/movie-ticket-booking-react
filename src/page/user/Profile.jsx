@@ -2,29 +2,31 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Typography, Card, Col, Row, List } from "antd";
 import { PhoneOutlined, MailOutlined, HomeOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const { Title, Text } = Typography;
+
+const SidebarMenu = () => {
+  return (
+    <List bordered>
+      <List.Item><Link to="/profile">Profile</Link></List.Item>
+      <List.Item><Link to="/billing-address">My Bookings</Link></List.Item>
+      <List.Item><Link to="/favorites">Favorite Movies</Link></List.Item>
+      <List.Item><Link to="/change-password">Change Password</Link></List.Item>
+      <List.Item><Link to="/settings">Settings</Link></List.Item>
+    </List>
+  );
+};
 
 const UserProfile = () => {
   const userProfile = useSelector((state) => state.auth.user);
 
-  const data = [
-    "Profile",
-    "Settings",
-    "Change Password",
-    "Billing Address",
-    "Favorite",
-  ];
   return (
     <div>
       <Card>
         <Row>
           <Col span={6}>
-            <List
-              bordered
-              dataSource={data}
-              renderItem={(item) => <List.Item>{item}</List.Item>}
-            />
+            <SidebarMenu />
           </Col>
           <Col span={18}>
             <Card>

@@ -6,7 +6,7 @@ body {
   font-style: normal;
   background-color: #f6f6f6;
 }
-.ant-select-selector .selector{
+.ant-select-selector .selector {
   border-radius: 3px;
   padding: 12px 16px;
   width: 100%;
@@ -80,7 +80,7 @@ body {
 }
 
 .btn-large {
-  padding:30px 60px 30px 60px;
+  padding: 30px 60px 30px 60px;
   border-radius: 4px;
 }
 
@@ -104,7 +104,6 @@ body {
   will-change: transform;
 }
 
-
 .menu-item {
   margin: 0 8px;
   font-size: 16px;
@@ -124,8 +123,8 @@ body {
 
 @media (min-width: 1024px) {
   .home-counter-container {
-      grid-gap: 160px;
-      padding-left: 110px;
+    grid-gap: 160px;
+    padding-left: 110px;
   }
 }
 .home-counter-info {
@@ -142,7 +141,7 @@ body {
   padding: 14px 24px;
 }
 .home__counter-number-container {
-  background-color: hsla(0, 0%, 100%, .5);
+  background-color: hsla(0, 0%, 100%, 0.5);
   border-radius: 8px;
   color: var(--blue-80);
   font-size: 46px;
@@ -176,4 +175,34 @@ body {
 
 .movie-list-container {
   padding-inline: 10%;
+}
+
+.movie-view {
+  background: #fff;
+  padding: 26px 25px 24px;
+  border-radius: 24px;
+}
+
+.movie-view .main-title {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: 0.36px;
+  margin-bottom: 16px;
+}
+.movie-view .main-p {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.08px;
+}
+
+.card-btn-margin {
+  margin-top: -10px;
+  button {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    padding: 25px 20px;
+  }
 }

@@ -40,3 +40,33 @@ export const loginUser = async (id, name, email, given_name, family_name, pictur
   }
 };
 
+
+export const getMovies = async (movieType) => {
+  const collections = collection(db, "movielist");
+  const userQuery = query(collections, where("movie_type", "==", movieType));
+  const querySnapshot = await getDocs(userQuery);
+  try {
+    const response = querySnapshot.docs[0].data();
+    return {
+      response
+    };
+  } catch (error) {
+    console.error("Error in getting movies", error);
+    throw error;
+  }
+}
+
+export const getBookingHistory = async (uuid) => {
+  const collections = collection(db, "bookings");
+  const userQuery = query(collections, where("uuid", "==", uuid));
+  const querySnapshot = await getDocs(userQuery);
+  try {
+    const response = querySnapshot.docs[0].data();
+    return {
+      response
+    };
+  } catch (error) {
+    console.error("Error in getting booking movies", error);
+    throw error;
+  }
+}
