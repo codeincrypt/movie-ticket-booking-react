@@ -1,9 +1,11 @@
 import UserLogin from "../auth/UserLogin";
-import SellerLogin from "../auth/UserLogin";
+import SellerLogin from "../auth/SellerLogin";
 
 import UserProfile from "../page/user/Profile";
 import MovieList from "../page/MovieList";
 import MovieView from "../page/Movie";
+
+import AdminDashboard from "../admin/page/Dashboard";
 
 export const AuthRouter = [
   {
@@ -13,6 +15,11 @@ export const AuthRouter = [
   },
   {
     path: "/seller-login",
+    exact: true,
+    component: SellerLogin,
+  },
+  {
+    path: "/admin-login",
     exact: true,
     component: SellerLogin,
   },
@@ -43,5 +50,18 @@ export const UserRouter = [
     path: "/profile",
     exact: true,
     component: UserProfile,
+  },
+];
+
+export const AdminRouter = [
+  {
+    path: "/admin",
+    exact: true,
+    component: AdminDashboard,
+  },
+  {
+    path: "/dashboard",
+    exact: true,
+    component: AdminDashboard,
   },
 ];

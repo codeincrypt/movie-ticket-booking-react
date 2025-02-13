@@ -3,17 +3,16 @@ import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Layout } from "antd";
 
-import MainHeader from "../containers/main/include/Header";
-import MainSidebar from "../containers/main/include/Sidebar";
-import MainFooter from "../containers/main/include/Footer";
-import "./../assets/css/allcss.scss";
+import MainHeader from "../admin/component/Header";
+import MainSidebar from "../admin/component/Sidebar";
+import MainFooter from "../admin/component/Footer";
 
 const AdminLayout = ({ children }) => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.adminAuth.isAuthenticated);
   console.log({ isAuthenticated });
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/admin-login" />;
   }
 
   const { Content } = Layout;

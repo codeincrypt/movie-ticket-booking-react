@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { AuthRouter, UserRouter } from "./Router";
+import { AuthRouter, UserRouter, AdminRouter } from "./Router";
 import MainLayout from "../layout/MainLayout";
 import AuthLayout from "../layout/AuthLayout";
+import AdminLayout from "../layout/AdminLayout";
 
 const Navigation = () => {
   return (
@@ -27,6 +28,18 @@ const Navigation = () => {
             <MainLayout>
               <item.component />
             </MainLayout>
+          }
+        />
+      ))}
+
+      {AdminRouter?.map((item, index) => (
+        <Route
+          path={item.path}
+          key={item.path}
+          element={
+            <AdminLayout>
+              <item.component />
+            </AdminLayout>
           }
         />
       ))}
