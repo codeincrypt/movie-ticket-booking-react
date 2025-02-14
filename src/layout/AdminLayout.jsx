@@ -8,7 +8,7 @@ import MainSidebar from "../admin/component/Sidebar";
 import MainFooter from "../admin/component/Footer";
 
 const AdminLayout = ({ children }) => {
-  const isAuthenticated = useSelector((state) => state.adminAuth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.adminauth.isAuthenticated);
   console.log({ isAuthenticated });
 
   if (!isAuthenticated) {

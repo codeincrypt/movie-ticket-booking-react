@@ -1,37 +1,41 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Button, Layout, Menu } from "antd";
-import {
-  BellOutlined,
-  SettingOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { Button, Layout, Menu, notification } from "antd";
+import { BellOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
+
+import { openNotificationWithIcon } from "../../request/Constant";
+import { logout } from "../../store/slices/adminAuthSlice";
 
 const { Header } = Layout;
 
 const MainHeader = () => {
+  const [api, contextHolder] = notification.useNotification();
+  const dispatch = useDispatch();
+  const logoutUser = () => {
+    dispatch(logout());
+    openNotificationWithIcon(api, "info", "logout", "John Doe");
+  };
+
   return (
     <Header style={{ padding: 0 }}>
+      {contextHolder}
       <div className="logo" />
       <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-        {/* <Button
+        <Button
           type="text"
-          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          onClick={() => toggleCollapsed()}
-          style={iconStyle}
-        /> */}
+          // icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          // onClick={() => toggleCollapsed()}
+          // style={iconStyle}
+        />
         <Menu.Item key="1"></Menu.Item>
         <Menu.Item key="2">
-          {" "}
-          <BellOutlined />{" "}
+          <BellOutlined />
         </Menu.Item>
         <Menu.Item key="3">
-          {" "}
-          <UserOutlined />{" "}
+          <UserOutlined />
         </Menu.Item>
         <Menu.Item key="4">
-          {" "}
-          <SettingOutlined />{" "}
+          <LogoutOutlined onClick={() => logoutUser()} />
         </Menu.Item>
       </Menu>
     </Header>

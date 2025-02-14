@@ -2,7 +2,7 @@ import React from "react";
 
 import Headers from "../page/components/Header";
 
-const MainLayout = ({ children }) => {
+const AuthLayout = ({ children }) => {
   return (
     <>
       <Headers />
@@ -11,4 +11,4 @@ const MainLayout = ({ children }) => {
   );
 };
 
-export default MainLayout;
+export default AuthLayout;

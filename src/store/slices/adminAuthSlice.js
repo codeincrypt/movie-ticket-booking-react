@@ -9,11 +9,11 @@ const adminAuthSlice = createSlice({
   name: "adminAuth",
   initialState,
   reducers: {
-    adminLogin: (state, action) => {
+    login: (state, action) => {
       state.user = action.payload;
       state.isAuthenticated = true;
     },
-    adminLogout: (state) => {
+    logout: (state) => {
       state.user = null;
       state.isAuthenticated = false;
     },

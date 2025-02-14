@@ -6,6 +6,7 @@ import MovieList from "../page/MovieList";
 import MovieView from "../page/Movie";
 
 import AdminDashboard from "../admin/page/Dashboard";
+import AdminLogin from "../auth/AdminLogin";
 
 export const AuthRouter = [
   {
@@ -21,7 +22,7 @@ export const AuthRouter = [
   {
     path: "/admin-login",
     exact: true,
-    component: SellerLogin,
+    component: AdminLogin,
   },
   {
     path: "/",
