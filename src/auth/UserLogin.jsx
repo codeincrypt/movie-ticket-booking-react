@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { useGoogleLogin } from "@react-oauth/google";
 import { Typography, Row, Button, Card } from "antd";
 import { FaGoogle } from "react-icons/fa";
-import { loginUser } from "../database/request";
+
 import { login } from "../store/slices/authSlice";
-import { getUserInfo } from "../request/request";
+import { getUserInfo, userLoginWithGoogle } from "../request/auth/request";
 
 const { Title, Text } = Typography;
 
@@ -23,20 +23,22 @@ const UserLogin = () => {
   });
   useEffect(() => {
     const fetchProfile = async () => {
+      console.log("user", user)
       try {
         const data = await getUserInfo(user);
         if (data.error) {
           console.error("Error fetching profile:", data.error);
           return;
         }
-        const { uuid } = await loginUser(
-          data.id,
-          data.name,
-          data.email,
-          data.given_name,
-          data.family_name,
-          data.picture
-        );
+        const payload = {
+          social_id : data.id,
+          name : data.name,
+          email : data.email,
+          given_name : data.given_name,
+          family_name : data.family_name,
+          picture : data.picture
+        }
+        const { uuid } = await userLoginWithGoogle(payload);
         dispatch(login({ ...data, uuid }));
         navigate("/movies");
       } catch (error) {

@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { Typography, Card, Col, Row, List } from "antd";
 import { PhoneOutlined, MailOutlined, HomeOutlined } from "@ant-design/icons";

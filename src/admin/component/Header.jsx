@@ -17,16 +17,10 @@ const MainHeader = () => {
   };
 
   return (
-    <Header style={{ padding: 0 }}>
+    <Header>
       {contextHolder}
       <div className="logo" />
       <Menu mode="horizontal" defaultSelectedKeys={["1"]}>
-        <Button
-          type="text"
-          // icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          // onClick={() => toggleCollapsed()}
-          // style={iconStyle}
-        />
         <Menu.Item key="1"></Menu.Item>
         <Menu.Item key="2">
           <BellOutlined />

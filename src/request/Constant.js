@@ -1,3 +1,5 @@
+import config from "../config/config";
+
 export const logo = "https://res.cloudinary.com/dpevovkcg/image/upload/v1738604519/movie-ticket/aiqpqwkamum5dpfwlfxg.png";
 export const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -410,7 +412,7 @@ export const datepickerConfig = {
   ],
 };
 
-export const openNotificationWithIcon = (api, type, action, message=null) => {
+export const openNotificationWithIcon = (api, type, action, message = null) => {
   const messages = {
     login: {
       message: "Welcome Back!",
@@ -428,7 +430,51 @@ export const openNotificationWithIcon = (api, type, action, message=null) => {
       message: "Invalid Login Attempt",
       description: "The email or password you entered is incorrect. Please try again.",
     },
+    apiError: {
+      message: "API Error",
+      description: message,
+    },
   };
 
   api[type](messages[action]);
 };
+
+export const getHeaders = (token) => {
+  if (token) {
+    return {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    };
+  }
+  return {
+    "Content-Type": "application/json",
+  };
+}
+// ✅ Generic Request Function
+export const Request = async (method, endpoint, token = null, payload = null) => {
+  const URL = `${config.BASE_URL}${endpoint}`;
+  const headers = getHeaders(token);
+
+  const options = {
+    method: method.toUpperCase(),
+    headers: headers,
+  };
+
+  if (payload) {
+    options.body = JSON.stringify(payload);
+  }
+
+  try {
+    const response = await fetch(URL, options);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error(`Error in ${method} request:`, error);
+    throw error;
+  }
+};
+
+export const GET = "get"
+export const POST = "post"

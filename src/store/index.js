@@ -4,19 +4,22 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import adminAuthSlice from "./slices/adminAuthSlice";
+import sellerAuthSlice from "./slices/sellerAuthSlice";
 import authSlice from "./slices/authSlice";
 import userSlice from "./slices/userSlice";
 
 const rootReducer = combineReducers({
-  auth      : authSlice,
-  adminauth : adminAuthSlice,
-  user      : userSlice,
+  auth        : authSlice,
+  adminauth   : adminAuthSlice,
+  sellerauth  : sellerAuthSlice,
+  user        : userSlice,
+  seller      : userSlice,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "adminauth"],
+  whitelist: ["auth", "adminauth", "sellerauth"],
 };
 
 // Persist the reducer

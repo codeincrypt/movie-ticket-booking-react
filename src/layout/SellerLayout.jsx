@@ -1,16 +1,16 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { ConfigProvider, Layout, theme } from "antd";
+import { ConfigProvider, Layout } from "antd";
 
-import MainHeader from "../admin/component/Header";
-import MainSidebar from "../admin/component/Sidebar";
+import MainHeader from "../seller/component/Header";
+import MainSidebar from "../seller/component/Sidebar";
 
 const AdminLayout = ({ children }) => {
-  const isAuthenticated = useSelector((state) => state.adminauth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.sellerauth.isAuthenticated);
   console.log({ isAuthenticated });
 
   if (!isAuthenticated) {
-    // return <Navigate to="/admin-login" />;
+    return <Navigate to="/seller-login" />;
   }
 
   const { Content } = Layout;

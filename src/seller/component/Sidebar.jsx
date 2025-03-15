@@ -6,36 +6,34 @@ const AdminSidebar = () => {
   const { Sider } = Layout;
 
   return (
-    <Sider width={250} collapsible trigger={null} className="sidebar"
-        style={{
-          background: "#fff",
-          height: "100vh",
-        }}
-      >
+    <Sider
+      width={250}
+      collapsible
+      trigger={null}
+      className="sidebar"
+      style={{
+        background: "#fff",
+        height: "100vh",
+      }}
+    >
       <Menu defaultSelectedKeys={["1"]} mode="inline">
         <div className="sidebar-logo d-flex align-items-center p-3">
-            <img src={logo} alt="logo" style={{width: "150px"}} />
+          <img src={logo} alt="logo" style={{ width: "150px" }} />
           {/* <Avatar style={{ verticalAlign: "middle" }} size="large">
             TB
           </Avatar> */}
         </div>
         <Menu.Item key="1">
-          <Link to="/admin/dashboard">Dashboard</Link>
+          <Link to="/seller/dashboard">Dashboard</Link>
         </Menu.Item>
         <Menu.Item key="2">
-          <Link to="/admin/users">Users</Link>
+          <Link to="/seller/bookings">Bookings</Link>
         </Menu.Item>
         <Menu.Item key="3">
-          <Link to="/admin/bookings">Bookings</Link>
+          <Link to="/seller/theatre">Theatres</Link>
         </Menu.Item>
         <Menu.Item key="4">
-          <Link to="/admin/movies">Movies</Link>
-        </Menu.Item>
-        <Menu.Item key="5">
-          <Link to="/admin/sellers">Merchant</Link>
-        </Menu.Item>
-        <Menu.Item key="6">
-          <Link to="/admin/theatre">Theatre</Link>
+          <Link to="/seller/movies">My Movies</Link>
         </Menu.Item>
       </Menu>
     </Sider>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, Row, Col, Statistic, Table } from "antd";
 import { UserOutlined, VideoCameraOutlined, ShopOutlined, CalendarOutlined } from "@ant-design/icons";
 
-const Dashboard = () => {
+const SellerDashboard = () => {
   const [stats, setStats] = useState({ movies: 0, users: 0, sellers: 0, bookings: 0 });
   const [bookings, setBookings] = useState([]);
 
@@ -38,10 +38,9 @@ const Dashboard = () => {
   return (
     <div style={{ padding: 20 }}>
       <Row gutter={16}>
-        <Col span={6}><Card><Statistic title="Movies" value={stats.movies} prefix={<VideoCameraOutlined />} /></Card></Col>
-        <Col span={6}><Card><Statistic title="Users" value={stats.users} prefix={<UserOutlined />} /></Card></Col>
-        <Col span={6}><Card><Statistic title="Sellers" value={stats.sellers} prefix={<ShopOutlined />} /></Card></Col>
-        <Col span={6}><Card><Statistic title="Bookings" value={stats.bookings} prefix={<CalendarOutlined />} /></Card></Col>
+        <Col span={8}><Card><Statistic title="New Movies" value={stats.movies} prefix={<VideoCameraOutlined />} /></Card></Col>
+        <Col span={8}><Card><Statistic title="Upcoming Movies" value={stats.movies} prefix={<VideoCameraOutlined />} /></Card></Col>
+        <Col span={8}><Card><Statistic title="Bookings" value={stats.bookings} prefix={<CalendarOutlined />} /></Card></Col>
       </Row>
       <Card title="Top 5 Recent Bookings" style={{ marginTop: 20 }}>
         <Table dataSource={bookings} columns={columns} pagination={false} />
@@ -50,4 +49,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default SellerDashboard;

@@ -1,0 +1,253 @@
+const data = [
+  {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+          12,
+          35,
+          10751,
+          14
+      ],
+      "id": 1108427,
+      "original_language": "en",
+      "original_title": "Moana",
+      "overview": "In Ancient Polynesia, when a terrible curse incurred by Maui reaches the island of an impetuous Chieftain, his willful daughter answers the Ocean's call to seek out the demigod to set things right.",
+      "popularity": 19.454,
+      "poster_path": "/ys0jZr0quHERDUEoCboGQEKPvgQ.jpg",
+      "release_date": "2026-07-09",
+      "title": "Moana",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+  },
+  {
+      "adult": false,
+      "backdrop_path": "/iYLKMV7PIBtFmtygRrhSiyzcVsF.jpg",
+      "genre_ids": [
+          12,
+          35,
+          10751,
+          16
+      ],
+      "id": 277834,
+      "original_language": "en",
+      "original_title": "Moana",
+      "overview": "In Ancient Polynesia, when a terrible curse incurred by Maui reaches an impetuous Chieftain's daughter's island, she answers the Ocean's call to seek out the demigod to set things right.",
+      "popularity": 10.994,
+      "poster_path": "/9tzN8sPbyod2dsa0lwuvrwBDWra.jpg",
+      "release_date": "2016-10-13",
+      "title": "Moana",
+      "video": false,
+      "vote_average": 7.6,
+      "vote_count": 12888
+  },
+  {
+      "adult": false,
+      "backdrop_path": "/qBCySj9arqJPixLUStI4aIw67VB.jpg",
+      "genre_ids": [
+          99
+      ],
+      "id": 94727,
+      "original_language": "en",
+      "original_title": "Moana",
+      "overview": "Robert J. Flaherty's South Seas follow-up to Nanook of the North is a Gauguin idyll moved by \"pride of beauty... pride of strength.\"",
+      "popularity": 2.88,
+      "poster_path": "/dkSM2bfwYaqY0k6cEFwej1LRWAk.jpg",
+      "release_date": "1926-01-07",
+      "title": "Moana",
+      "video": false,
+      "vote_average": 6.6,
+      "vote_count": 34
+  },
+  {
+      "adult": false,
+      "backdrop_path": "/bpePOhe9aLg8v7eiTN5sHD02JES.jpg",
+      "genre_ids": [
+          18,
+          10770
+      ],
+      "id": 45890,
+      "original_language": "it",
+      "original_title": "Moana",
+      "overview": "The life story of Italian iconic pornographic actress Moana Pozzi. The actress Ilona Staller sued the production of the film for the unauthorized use of the character \"Cicciolina\", of which she owned the rights.",
+      "popularity": 3.548,
+      "poster_path": "/nEDFaNVqmLl2UeUYvvkKDSge5Ed.jpg",
+      "release_date": "2009-11-01",
+      "title": "Moana",
+      "video": false,
+      "vote_average": 6.87,
+      "vote_count": 23
+  },
+  {
+      "adult": false,
+      "backdrop_path": "/zo8CIjJ2nfNOevqNajwMRO6Hwka.jpg",
+      "genre_ids": [
+          16,
+          12,
+          10751,
+          35
+      ],
+      "id": 1241982,
+      "original_language": "en",
+      "original_title": "Moana 2",
+      "overview": "After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she's ever faced.",
+      "popularity": 972.201,
+      "poster_path": "/aLVkiINlIeCkcZIzb7XHzPYgO6L.jpg",
+      "release_date": "2024-11-21",
+      "title": "Moana 2",
+      "video": false,
+      "vote_average": 7.159,
+      "vote_count": 1699
+  },
+  {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+          99
+      ],
+      "id": 268516,
+      "original_language": "en",
+      "original_title": "Moana",
+      "overview": "Documentary focused on underwater shootings and hawaiian dances.",
+      "popularity": 0.104,
+      "poster_path": null,
+      "release_date": "1959-01-01",
+      "title": "Moana",
+      "video": false,
+      "vote_average": 7,
+      "vote_count": 1
+  },
+  {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+          12
+      ],
+      "id": 1196711,
+      "original_language": "es",
+      "original_title": "La Grande Savana",
+      "overview": "Henri is a music composer, but after a love affair gone wrong, he decides to leave civilization, and isolate himself deep in the valley of the Amazon river. Moana is a girl who finds him attractive, and informs him about the tribe's treasure. Eventually, his heart balances between a new love or getting hugely rich.",
+      "popularity": 0.19,
+      "poster_path": "/yzKzYPpDWf8r0kASYKl3AbJNjTh.jpg",
+      "release_date": "1955-12-22",
+      "title": "Moana, Virgin of the Amazon",
+      "video": false,
+      "vote_average": 7.5,
+      "vote_count": 1
+  },
+  {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+          99
+      ],
+      "id": 1243917,
+      "original_language": "fr",
+      "original_title": "Moana double face",
+      "overview": "Meeting with traditional tattoo artist Moana Heitaa. Moana uses the combs. Born in Tahiti, he learned with his Hawaiian mentor Heizea of Soul Pacific Signature, before traveling to the Pacific to deepen his knowledge and rediscover this ancestral art which has continued in Samoa and Tonga.",
+      "popularity": 0.234,
+      "poster_path": "/1Ey6HLW9fimtUw0M45fmV9exZU5.jpg",
+      "release_date": "2015-08-12",
+      "title": "Moana double face",
+      "video": false,
+      "vote_average": 9.7,
+      "vote_count": 3
+  },
+  {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+          99
+      ],
+      "id": 631526,
+      "original_language": "en",
+      "original_title": "Moananuiākea: One Ocean, One People, One Canoe",
+      "overview": "From 2019 Maui Film Festival This powerful documentary celebrates the historic Malama Honua Worldwide Voyage that connected countless individuals and communities from around the globe. A voyage that also represented the fulfillment of the vision of Nainoa Thompson and his contemporaries, the passing of the mantle to the next generation of kanaka maoli who will retain the skills of their ancestors and perpetuate this tradition for generations to come so the legacy of Hokulea can last for 1,000 generations.",
+      "popularity": 0.944,
+      "poster_path": "/yaitmjipTAWWoaG5dFNZAZzUQuI.jpg",
+      "release_date": "2018-11-18",
+      "title": "Moananuiākea: One Ocean, One People, One Canoe",
+      "video": false,
+      "vote_average": 9.167,
+      "vote_count": 3
+  },
+  {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [],
+      "id": 980158,
+      "original_language": "en",
+      "original_title": "Moana Jackson: Portrait of a quiet revolutionary",
+      "overview": "Called a disruptor, navigator, transformer and visionary, Moana Jackson was many things to many people. Towards the end of his battle with cancer he sat down to talk about his life and groundbreaking work in Māori criminal justice and constitutional reform with broadcaster and ‘niece’.",
+      "popularity": 0.036,
+      "poster_path": null,
+      "release_date": "",
+      "title": "Moana Jackson: Portrait of a quiet revolutionary",
+      "video": false,
+      "vote_average": 8.5,
+      "vote_count": 1
+  },
+  {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+          18,
+          36
+      ],
+      "id": 900833,
+      "original_language": "en",
+      "original_title": "Ala Moana Boys",
+      "overview": "Blamed for a crime they did not commit, five young men in 1930s Hawai’i must consider their futures and their families as they weigh the consequences of taking action.",
+      "popularity": 0.284,
+      "poster_path": "/8wiW6AEISe9KSveSNl2n4MM7Z4s.jpg",
+      "release_date": "2022-07-11",
+      "title": "Ala Moana Boys",
+      "video": false,
+      "vote_average": 9,
+      "vote_count": 1
+  },
+  {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [],
+      "id": 1195573,
+      "original_language": "en",
+      "original_title": "Moana Sing-Along",
+      "overview": "Sing along with your favorite songs with on-screen lyrics as you watch \"Moana.\"",
+      "popularity": 0.055,
+      "poster_path": null,
+      "release_date": "",
+      "title": "Moana Sing-Along",
+      "video": false,
+      "vote_average": 10,
+      "vote_count": 1
+  },
+  {
+      "adult": false,
+      "backdrop_path": "/7rgHEYy23gAmxTyxivGXBTBikA1.jpg",
+      "id": 1241984,
+      "original_language": "en",
+      "original_title": "Moana Collection",
+      "overview": "The Disney original collection follows in ancient Polynesia and tells the story of Moana, the strong-willed daughter of a chief of a coastal village, who is chosen by the ocean itself to reunite a mystical relic with the goddess Te Fiti.",
+      "poster_path": "/wuU5y8Jd5GWVcf71uv1nyoNkgwR.jpg",
+      "title": "Moana Collection"
+  },
+  {
+      "adult": false,
+      "backdrop_path": "/3oxGovyEzVsTZIgJEgJpR5ZnOZV.jpg",
+      "genre_ids": [
+          18
+      ],
+      "id": 327317,
+      "original_language": "it",
+      "original_title": "Provocazione",
+      "overview": "In a villa on an island (St. Peter) a little out of season, inhabit Vanessa, a young widow, and stepdaughters Kikki and alive. Vanessa had married their father above all because it was very rich. After her husband's death, Vanessa decided to keep him Alive and Kikki and also call Roberto, her former lover, now a professor with the aim of preparing the two girls to the maturity examination. Shortly after his arrival, he establishes an atmosphere heavy with half-empty Island the villa that seems almost a luxury prison do understand immediately that the stepmother and stepdaughters will hate and despise each other.",
+      "popularity": 4.529,
+      "poster_path": "/5xryGDSx1fImQbD0Z9BIXCSXftJ.jpg",
+      "release_date": "1988-11-25",
+      "title": "Summer Temptations",
+      "video": false,
+      "vote_average": 5.3,
+      "vote_count": 19
+  }
+]

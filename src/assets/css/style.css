@@ -4,49 +4,8 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-style: normal;
+  margin: 0;
   background-color: #f6f6f6;
-}
-.ant-select-selector .selector {
-  border-radius: 3px;
-  padding: 12px 16px;
-  width: 100%;
-  display: block;
-  caret-color: rgb(26, 145, 240);
-  background-color: rgb(239, 242, 249);
-  border-bottom: 2px solid transparent;
-  outline: none;
-  color: rgb(30, 37, 50);
-  transition: color 0.1s;
-}
-.form-control {
-  border-radius: 3px;
-  padding: 12px 16px;
-  width: 100%;
-  display: block;
-  caret-color: rgb(26, 145, 240);
-  background-color: rgb(239, 242, 249);
-  border-bottom: 2px solid transparent;
-  outline: none;
-  color: rgb(30, 37, 50);
-  transition: color 0.1s;
-}
-.form-control:focus {
-  border-bottom: 2px solid rgb(14, 109, 210);
-}
-.fSPOaA {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  height: 2px;
-  background-color: rgb(26, 145, 240);
-  border-radius: 0px 0px 2px 2px;
-  pointer-events: none;
-  opacity: 0;
-  transform: scaleX(0.5);
-}
-.text-primary {
-  color: rgb(26, 145, 240);
 }
 
 .heading1 {
@@ -163,10 +122,6 @@ body {
   line-height: 1;
 }
 
-.ant-btn-primary {
-  background: #1a91f0;
-}
-
 .movie-list {
   background: #fff;
   padding: 26px 25px 24px;
@@ -205,4 +160,7 @@ body {
     border-top-right-radius: 0px !important;
     padding: 25px 20px;
   }
+}
+.bg-muted {
+  background-color: #f6f6f6;
 }
