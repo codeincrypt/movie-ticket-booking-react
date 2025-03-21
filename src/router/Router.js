@@ -17,6 +17,7 @@ import SellerBookings from "../seller/page/SellerBookings";
 import SellerTheatre from "../seller/page/SellerTheatre";
 import SellerDashboard from "../seller/page/Dashboard";
 import Sellers from "../admin/page/Sellers";
+import SellerSeatingMap from "../seller/page/SellerSeatingMap";
 
 export const UserAuthRouter = [
   {
@@ -120,6 +121,11 @@ export const SellerRouter = [
     path: "/seller/theatre",
     exact: true,
     component: SellerTheatre,
+  },
+  {
+    path: "/seller/theatre/seating/:id",
+    exact: true,
+    component: SellerSeatingMap,
   },
   {
     path: "/seller/bookings",

@@ -164,3 +164,7 @@ body {
 .bg-muted {
   background-color: #f6f6f6;
 }
+
+.seat-row {
+  display: flex;
+}

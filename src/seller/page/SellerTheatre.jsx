@@ -1,23 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import {
-  Button,
-  message,
-  Table,
-  Image,
-  Row,
-  Card,
-  notification,
-  Form,
-  Modal,
-  Input,
-} from "antd";
+import { Button, message, Table, Row, Card, notification } from "antd";
+import { Form, Modal, Input } from "antd";
 
 import { getMyTheatre, addNewTheatre } from "../../request/requestSeller";
 import { openNotificationWithIcon } from "../../request/Constant";
 
 const SellerTheatre = () => {
+  const navigate = useNavigate();
   const [api, contextHolder] = notification.useNotification();
   const TOKEN = useSelector((state) => state.sellerauth.token);
 
@@ -27,6 +19,8 @@ const SellerTheatre = () => {
 
   const showModal = () => setIsModalOpen(true);
   const handleCancel = () => setIsModalOpen(false);
+
+  const manageSeating = (id) => navigate(`/seller/theatre/seating/${id}`);
 
   const columns = [
     {
@@ -64,7 +58,12 @@ const SellerTheatre = () => {
         return (
           <>
             <Button type="primary">Bookings</Button>
-            <Button style={{ marginInline: 10 }} type="primary" danger>
+            <Button
+              style={{ marginInline: 10 }}
+              onClick={() => manageSeating(item)}
+              type="primary"
+              danger
+            >
               Seating Map
             </Button>
           </>
@@ -76,11 +75,9 @@ const SellerTheatre = () => {
   const fetchTheatre = async () => {
     try {
       const response = await getMyTheatre(TOKEN);
-      if (response.status === "1") {
-        setDatalist(response.data);
-      } else {
-        message.error(response.message);
-      }
+      response.status === "1"
+        ? setDatalist(response.data)
+        : message.error(response.message);
     } catch (error) {
       openNotificationWithIcon(api, "danger", "apiError", error.message);
     }
@@ -93,7 +90,12 @@ const SellerTheatre = () => {
         setIsModalOpen(false);
         openNotificationWithIcon(api, "danger", "apiError", response.message);
       } else {
-        openNotificationWithIcon( api, "danger", "apiError", "failed to add theatre");
+        openNotificationWithIcon(
+          api,
+          "danger",
+          "apiError",
+          "failed to add theatre"
+        );
       }
     } catch (error) {
       openNotificationWithIcon(api, "danger", "apiError", error.message);
