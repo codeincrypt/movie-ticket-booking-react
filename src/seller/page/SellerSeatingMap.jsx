@@ -3,45 +3,73 @@ import { Card, Button, Select, InputNumber, Form, Row, Col } from "antd";
 
 const { Option } = Select;
 
+// Seat type priority order
+const seatPriorities = ["Recliner", "Executive", "Premium", "Normal"];
+
 const TheatreSeatingMap = () => {
   const [seatingConfig, setSeatingConfig] = useState([]);
 
-  // Function to get next available row letter
-  const getNextRowLetter = (existingRows, count) => {
-    const lastRow = existingRows.length
-      ? existingRows[existingRows.length - 1].row
-      : "@";
+  // Function to get row letters starting from a given row
+  const generateRowLetters = (startLetter, count) => {
     return Array.from({ length: count }, (_, i) =>
-      String.fromCharCode(lastRow.charCodeAt(0) + i + 1)
+      String.fromCharCode(startLetter.charCodeAt(0) + i)
     );
   };
 
-  // Function to add a new section or append rows to existing section
+  // Function to get the last row letter from the seating configuration
+  const getLastRowLetter = (sections, type) => {
+    const higherPrioritySections = sections.filter(
+      (section) =>
+        seatPriorities.indexOf(section.type) < seatPriorities.indexOf(type)
+    );
+    const lastRow =
+      higherPrioritySections.flatMap((s) => s.seat).pop()?.row || "@";
+    return String.fromCharCode(lastRow.charCodeAt(0) + 1);
+  };
+
+  // Function to update seating configuration
+  const updateSeatingOrder = (updatedConfig) => {
+    let nextRowLetter = "@"; // Start before 'A'
+
+    return seatPriorities
+      .map((type) => {
+        const section = updatedConfig.find((s) => s.type === type);
+        if (!section) return null;
+
+        // Assign new row letters sequentially
+        section.seat = section.seat.map((seatRow, index) => ({
+          ...seatRow,
+          row: String.fromCharCode(nextRowLetter.charCodeAt(0) + index + 1),
+        }));
+
+        // Update next available row letter
+        nextRowLetter =
+          section.seat[section.seat.length - 1]?.row || nextRowLetter;
+        return section;
+      })
+      .filter(Boolean);
+  };
+
+  // Function to add or update sections
   const addSection = (values) => {
     setSeatingConfig((prevConfig) => {
-      const existingType = prevConfig.find((section) => section.type === values.type);
-      if (existingType) {
-        // Append rows to the existing section
-        const newRowLetters = getNextRowLetter(existingType.seat, values.rows);
-        const newSeats = newRowLetters.map((rowLetter) => ({
-          row: rowLetter,
-          seating: Array(values.cols).fill(1),
-        }));
-        return prevConfig.map((section) =>
-          section.type === values.type
-            ? { ...section, seat: [...section.seat, ...newSeats] }
-            : section
-        );
-      } else {
-        // Create a new section with new rows
-        const allRows = prevConfig.flatMap((section) => section.seat);
-        const newRowLetters = getNextRowLetter(allRows, values.rows);
-        const newSeats = newRowLetters.map((rowLetter) => ({
-          row: rowLetter,
-          seating: Array(values.cols).fill(1),
-        }));
-        return [...prevConfig, { type: values.type, seat: newSeats }];
-      }
+      const lastRowLetter = getLastRowLetter(prevConfig, values.type);
+      const newRowLetters = generateRowLetters(lastRowLetter, values.rows);
+
+      const newSeats = newRowLetters.map((rowLetter) => ({
+        row: rowLetter,
+        seating: Array(values.cols).fill(1),
+      }));
+
+      const updatedConfig = prevConfig.some((s) => s.type === values.type)
+        ? prevConfig.map((section) =>
+            section.type === values.type
+              ? { ...section, seat: [...section.seat, ...newSeats] }
+              : section
+          )
+        : [...prevConfig, { type: values.type, seat: newSeats }];
+
+      return updateSeatingOrder(updatedConfig);
     });
   };
 
@@ -70,42 +98,56 @@ const TheatreSeatingMap = () => {
 
   return (
     <Card>
-      <h2>Theatre Seating Configuration</h2>
+      <Row justify="space-between" className="mb-4">
+        <h2>Theatre Seating Configuration</h2>
+        <Button type="primary">Go Back</Button>
+      </Row>
+
       <Form layout="inline" onFinish={addSection}>
         <Form.Item name="type" label="Seat Type" rules={[{ required: true }]}>
           <Select placeholder="Select Type">
-            <Option value="Recliner">Recliner</Option>
-            <Option value="Executive">Executive</Option>
-            <Option value="Premium">Premium</Option>
-            <Option value="Normal">Normal</Option>
+            {seatPriorities.map((seatType) => (
+              <Option key={seatType} value={seatType}>
+                {seatType}
+              </Option>
+            ))}
           </Select>
         </Form.Item>
         <Form.Item name="rows" label="Rows" rules={[{ required: true }]}>
           <InputNumber min={1} />
         </Form.Item>
-        <Form.Item name="cols" label="Seats per Row" rules={[{ required: true }]}>
+        <Form.Item
+          name="cols"
+          label="Seats per Row"
+          rules={[{ required: true }]}
+        >
           <InputNumber min={1} />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Add Section
+            Add Seats
           </Button>
         </Form.Item>
       </Form>
 
       <div className="theatre-seating">
         {seatingConfig.map(({ type, seat }) => (
-          <div key={type} className="section">
-            <h3>{type}</h3>
+          <div key={type} className="section mb-2 text-center">
+            <Col span={24} className="mb-2 text-center">
+              <h3>{type}</h3>
+            </Col>
             {seat.map(({ row, seating }) => (
               <div key={row}>
-                <h4>Row {row}</h4>
                 <Row gutter={[5, 5]}>
+                  <Col className="theatre-row-label">
+                    <b>{row}</b>
+                  </Col>
                   {seating.map((value, index) => (
-                    <Col key={index}>
+                    <Col key={index} className="mb-1">
                       <Button
-                        type={value === 1 ? "primary" : "default"}
-                        danger={value === 0}
+                        className={
+                          value === 1 ? "theatre-seat" : "theatre-noseat"
+                        }
                         onClick={() => toggleSeat(type, row, index)}
                       >
                         {value === 1 ? index + 1 : "X"}
@@ -118,7 +160,16 @@ const TheatreSeatingMap = () => {
           </div>
         ))}
       </div>
-      <Button onClick={console.log(seatingConfig)}>Submit</Button>
+
+      <Col span={24} style={{ textAlign: "right", marginTop: "20px" }}>
+        <Button
+          type="primary"
+          danger
+          onClick={() => console.log(seatingConfig)}
+        >
+          Confirm your Theatre seating Map
+        </Button>
+      </Col>
     </Card>
   );
 };

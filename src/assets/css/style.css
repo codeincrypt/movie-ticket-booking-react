@@ -168,3 +168,53 @@ body {
 .seat-row {
   display: flex;
 }
+/* Row label styling */
+.theatre-row-label {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  width: 40px;
+}
+
+/* Active seat */
+.theatre-seat {
+  background: #00b8f5;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+.theatre-seat:hover {
+  background-color: #008dcf;
+}
+
+/* Inactive seat */
+.theatre-noseat {
+  border: 1.5px solid #00b8f5;
+  background: transparent;
+  color: #00b8f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for inactive seats */
+.theatre-noseat button:hover {
+  background: rgba(0, 184, 245, 0.1);
+}
+
